@@ -1,0 +1,1 @@
+This folder is ignored by git. Place your temporary test files here.
