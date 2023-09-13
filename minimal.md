@@ -58,7 +58,7 @@ its footer:
 
 1 string channel, 9 samples
 
-Data: `[ (the XML header), 'Hello', 'World', 'from', 'LSL', 'Hello', 'World', 'from', 'LSL']`
+Data: `[ (the XML footer), 'Hello', 'World', 'from', 'LSL', 'Hello', 'World', 'from', 'LSL']`
 
 Timestamps: as above
 
