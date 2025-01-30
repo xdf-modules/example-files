@@ -2,11 +2,11 @@
 
 Example files to test XDF readers.
 
-* [minimal.xdf](#minimal)
-* [clock\_resets.xdf](#clock_resets)
-* [empty\_streams.xdf](#empty_streams)
+* [minimal.xdf](#minimalxdf)
+* [clock\_resets.xdf](#clock_resetsxdf)
+* [empty\_streams.xdf](#empty_streamsxdf)
 
-## minimal.xdf <a name="minimal"></a>
+## minimal.xdf
 
 Minimal example file with two streams.
 
@@ -96,7 +96,7 @@ Data: `[ (the XML footer), 'Hello', 'World', 'from', 'LSL', 'Hello', 'World', 'f
 Timestamps: as above
 
 
-## clock\_resets.xdf <a name="clock_resets"></a>
+## clock\_resets.xdf
 ### Stream 1
 #### Header
 
@@ -182,7 +182,7 @@ Timestamps: as above
 </info>
 ```
 
-## empty_streams.xdf <a name="empty_streams"></a>
+## empty\_streams.xdf
 
 Example containing empty and non-empty data and marker streams.
 
