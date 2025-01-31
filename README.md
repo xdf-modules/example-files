@@ -11,6 +11,9 @@ Example files to test XDF readers.
 Minimal example file with two streams.
 
 ### Stream 0
+
+3 `int16` channels, 9 samples
+
 #### Header
 
 ``` xml
@@ -49,8 +52,6 @@ Minimal example file with two streams.
 
 #### Time-series data
 
-3 `int16` channels, 9 samples
-
 Data:
 
 ```
@@ -68,6 +69,9 @@ Data:
 Timestamps: 5.1 to 5.9 in .1 steps
 
 ### Stream 0x02C0FFEE / 46202862
+
+1 string channel, 9 samples
+
 #### Header
 
 ``` xml
@@ -88,8 +92,6 @@ Timestamps: 5.1 to 5.9 in .1 steps
 Identical to stream 0.
 
 #### Time-series data
-
-1 string channel, 9 samples
 
 Data: `[ (the XML footer), 'Hello', 'World', 'from', 'LSL', 'Hello', 'World', 'from', 'LSL']`
 
@@ -136,6 +138,10 @@ Timestamps: as above
       <value>-652340.2838639501</value>
     </offset>
     <!-- cut -->
+    <offset>
+      <time>264.6430016000002</time>
+      <value>1121.165595</value>
+    </offset>
   </clock_offsets>
 </info>
 ```
@@ -178,6 +184,10 @@ Timestamps: as above
       <value>-652340.28383985</value>
     </offset>
     <!-- cut -->
+    <offset>
+      <time>264.6385764000001</time>
+      <value>1121.1656319</value>
+    </offset>
   </clock_offsets>
 </info>
 ```
@@ -187,23 +197,136 @@ Timestamps: as above
 Example containing empty and non-empty data and marker streams.
 
 ### Stream 1
+
+1 `string` channel, 1 sample
+
 #### Header
 
 ``` xml
 <info>
-	<name>Data stream: test stream 0 counter</name>
-	<type>data</type>
+	<name>ctrl</name>
+	<type>control</type>
 	<channel_count>1</channel_count>
-	<channel_format>int32</channel_format>
-	<source_id>test_stream.py:525352:0</source_id>
-	<nominal_srate>1.000000000000000</nominal_srate>
+	<channel_format>string</channel_format>
+	<source_id>kassia</source_id>
+	<nominal_srate>0.000000000000000</nominal_srate>
 	<version>1.100000000000000</version>
-	<created_at>401309.0364671120</created_at>
-	<uid>25e1bd13-340f-499c-bb91-5d1e75cec535</uid>
+	<created_at>91684.87631725401</created_at>
+	<uid>4740b9ba-d45d-4e2b-9a4b-ee966d9b56df</uid>
 	<session_id>default</session_id>
 	<hostname>kassia</hostname>
 	<v4address />
-	<v4data_port>16576</v4data_port>
+	<v4data_port>16572</v4data_port>
+	<v4service_port>16572</v4service_port>
+	<v6address />
+	<v6data_port>0</v6data_port>
+	<v6service_port>0</v6service_port>
+	<desc>
+		<manufacturer>pylsltools</manufacturer>
+	</desc>
+</info>
+```
+
+#### Footer
+
+``` xml
+<info>
+  <first_timestamp>91725.014004246</first_timestamp>
+  <last_timestamp>91725.014004246</last_timestamp>
+  <sample_count>1</sample_count>
+  <clock_offsets>
+    <offset>
+      <time>91716.691545932</time>
+      <value>-1.889200211735442e-05</value>
+    </offset>
+    <!-- cut -->
+    <offset>
+      <time>91746.69261952251</time>
+      <value>-3.837950498564169e-05</value>
+    </offset>
+  </clock_offsets>
+</info>
+```
+
+#### Time-series data
+
+| time_stamp |            0 |
+|------------|--------------|
+|      91725 | {"state": 2} |
+
+### Stream 2
+
+Empty stream.
+
+#### Header
+
+``` xml
+<info>
+	<name>Empty marker stream: test stream 0 counter</name>
+	<type>data</type>
+	<channel_count>1</channel_count>
+	<channel_format>string</channel_format>
+	<source_id>test_stream.py:191748:0</source_id>
+	<nominal_srate>0.000000000000000</nominal_srate>
+	<version>1.100000000000000</version>
+	<created_at>91696.18816467900</created_at>
+	<uid>6f7e0288-10b8-4f48-89f8-0381ce20922f</uid>
+	<session_id>default</session_id>
+	<hostname>kassia</hostname>
+	<v4address />
+	<v4data_port>16574</v4data_port>
+	<v4service_port>16574</v4service_port>
+	<v6address />
+	<v6data_port>0</v6data_port>
+	<v6service_port>0</v6service_port>
+	<desc>
+		<manufacturer>pylsltools</manufacturer>
+	</desc>
+</info>
+```
+
+#### Footer
+
+``` xml
+<info>
+  <first_timestamp>0</first_timestamp>
+  <last_timestamp>0</last_timestamp>
+  <sample_count>0</sample_count>
+  <clock_offsets>
+    <offset>
+      <time>91716.691513728</time>
+      <value>-2.540599962230772e-05</value>
+    </offset>
+    <!-- cut -->
+    <offset>
+      <time>91746.69276649199</time>
+      <value>-2.026499714702368e-05</value>
+    </offset>
+  </clock_offsets>
+</info>
+```
+
+### Stream 3
+
+Empty stream.
+
+#### Header
+
+``` xml
+<info>
+	<name>Empty data stream: test stream 0 counter</name>
+	<type>data</type>
+	<channel_count>1</channel_count>
+	<channel_format>float32</channel_format>
+	<source_id>test_stream.py:191790:0</source_id>
+	<nominal_srate>1.000000000000000</nominal_srate>
+	<version>1.100000000000000</version>
+	<created_at>91699.83395166400</created_at>
+	<uid>ff430a18-9954-43f5-bb5f-f5589e3aa6a2</uid>
+	<session_id>default</session_id>
+	<hostname>kassia</hostname>
+	<v4address />
+	<v4data_port>16575</v4data_port>
 	<v4service_port>16575</v4service_port>
 	<v6address />
 	<v6data_port>0</v6data_port>
@@ -222,62 +345,46 @@ Example containing empty and non-empty data and marker streams.
 
 #### Footer
 
-`sample_count` is off by one.
-
 ``` xml
 <info>
-  <first_timestamp>401340.7970979316</first_timestamp>
-  <last_timestamp>401350.7970979316</last_timestamp>
-  <sample_count>9</sample_count>
+  <first_timestamp>0</first_timestamp>
+  <last_timestamp>0</last_timestamp>
+  <sample_count>0</sample_count>
   <clock_offsets>
     <offset>
-      <time>401322.6950535755</time>
-      <value>-3.67984757758677e-05</value>
+      <time>91716.6915301265</time>
+      <value>-2.211050014011562e-05</value>
     </offset>
     <!-- cut -->
     <offset>
-      <time>401372.696774303</time>
-      <value>-3.553100395947695e-05</value>
+      <time>91746.69269425601</time>
+      <value>-1.128000440075994e-05</value>
     </offset>
   </clock_offsets>
 </info>
 ```
 
-#### Time-series data
+### Stream 4
 
 1 `int32` channel, 10 samples
 
-| time_stamp | ch:00 |
-|------------|-------|
-|     401341 |     0 |
-|     401342 |     1 |
-|     401343 |     2 |
-|     401344 |     3 |
-|     401345 |     4 |
-|     401346 |     5 |
-|     401347 |     6 |
-|     401348 |     7 |
-|     401349 |     8 |
-|     401350 |     9 |
-
-### Stream 2
 #### Header
 
 ``` xml
 <info>
-	<name>Empty data stream: test stream 0 counter</name>
+	<name>Data stream: test stream 0 counter</name>
 	<type>data</type>
 	<channel_count>1</channel_count>
-	<channel_format>float32</channel_format>
-	<source_id>test_stream.py:525257:0</source_id>
+	<channel_format>int32</channel_format>
+	<source_id>test_stream.py:191695:0</source_id>
 	<nominal_srate>1.000000000000000</nominal_srate>
 	<version>1.100000000000000</version>
-	<created_at>401285.3015719900</created_at>
-	<uid>30608cb9-b177-420d-9d60-3ce0f07949af</uid>
+	<created_at>91690.55328314200</created_at>
+	<uid>bc60b7bb-e632-407c-b3db-e42f9cad4179</uid>
 	<session_id>default</session_id>
 	<hostname>kassia</hostname>
 	<v4address />
-	<v4data_port>16574</v4data_port>
+	<v4data_port>16573</v4data_port>
 	<v4service_port>16573</v4service_port>
 	<v6address />
 	<v6data_port>0</v6data_port>
@@ -298,18 +405,18 @@ Example containing empty and non-empty data and marker streams.
 
 ``` xml
 <info>
-  <first_timestamp>0</first_timestamp>
-  <last_timestamp>0</last_timestamp>
-  <sample_count>0</sample_count>
+  <first_timestamp>91725.21394789348</first_timestamp>
+  <last_timestamp>91735.21394789348</last_timestamp>
+  <sample_count>10</sample_count>
   <clock_offsets>
     <offset>
-      <time>401322.695044571</time>
-      <value>-3.130998811684549e-05</value>
+      <time>91716.6915717245</time>
+      <value>-1.94335007108748e-05</value>
     </offset>
     <!-- cut -->
     <offset>
-      <time>401372.6966923515</time>
-      <value>-1.937249908223748e-05</value>
+      <time>91746.69274602149</time>
+      <value>-3.694550105137751e-05</value>
     </offset>
   </clock_offsets>
 </info>
@@ -317,115 +424,15 @@ Example containing empty and non-empty data and marker streams.
 
 #### Time-series data
 
-Empty stream.
-
-### Stream 3
-#### Header
-
-``` xml
-<info>
-	<name>Empty marker stream: test stream 0 counter</name>
-	<type>data</type>
-	<channel_count>1</channel_count>
-	<channel_format>string</channel_format>
-	<source_id>test_stream.py:525304:0</source_id>
-	<nominal_srate>0.000000000000000</nominal_srate>
-	<version>1.100000000000000</version>
-	<created_at>401297.3977076210</created_at>
-	<uid>3ece2528-0c45-4e6f-9a00-7eb1a7f7bd84</uid>
-	<session_id>default</session_id>
-	<hostname>kassia</hostname>
-	<v4address />
-	<v4data_port>16575</v4data_port>
-	<v4service_port>16574</v4service_port>
-	<v6address />
-	<v6data_port>0</v6data_port>
-	<v6service_port>0</v6service_port>
-	<desc>
-		<manufacturer>pylsltools</manufacturer>
-	</desc>
-</info>
-```
-
-#### Footer
-
-``` xml
-<info>
-  <first_timestamp>0</first_timestamp>
-  <last_timestamp>0</last_timestamp>
-  <sample_count>0</sample_count>
-  <clock_offsets>
-    <offset>
-      <time>401322.6951932265</time>
-      <value>-2.594449324533343e-05</value>
-    </offset>
-    <!-- cut -->
-    <offset>
-      <time>401372.6966891775</time>
-      <value>-1.620649709366262e-05</value>
-    </offset>
-  </clock_offsets>
-</info>
-```
-
-#### Time-series data
-
-Empty stream.
-
-### Stream 4
-#### Header
-
-``` xml
-<info>
-	<name>ctrl</name>
-	<type>control</type>
-	<channel_count>1</channel_count>
-	<channel_format>string</channel_format>
-	<source_id>kassia</source_id>
-	<nominal_srate>0.000000000000000</nominal_srate>
-	<version>1.100000000000000</version>
-	<created_at>401261.9233872890</created_at>
-	<uid>eb31d8f6-b57a-4e45-bc5a-fa98573d6503</uid>
-	<session_id>default</session_id>
-	<hostname>kassia</hostname>
-	<v4address />
-	<v4data_port>16573</v4data_port>
-	<v4service_port>16572</v4service_port>
-	<v6address />
-	<v6data_port>0</v6data_port>
-	<v6service_port>0</v6service_port>
-	<desc>
-		<manufacturer>pylsltools</manufacturer>
-	</desc>
-</info>
-```
-
-#### Footer
-
-``` xml
-<info>
-  <first_timestamp>401340.597121355</first_timestamp>
-  <last_timestamp>401340.597121355</last_timestamp>
-  <sample_count>0</sample_count>
-  <clock_offsets>
-    <offset>
-      <time>401322.69519626</time>
-      <value>-2.898101229220629e-05</value>
-    </offset>
-    <!-- cut -->
-    <offset>
-      <time>401372.6968414925</time>
-      <value>-2.722250064834952e-05</value>
-    </offset>
-  </clock_offsets>
-</info>
-```
-
-#### Time-series data
-
-1 `string` channel, 1 sample
-
-| time_stamp |            0 |
-|------------|--------------|
-|     401341 | {"state": 2} |
-
+| time_stamp | ch:00 |
+|------------|-------|
+|    91725.2 |     0 |
+|    91726.2 |     1 |
+|    91727.2 |     2 |
+|    91728.2 |     3 |
+|    91729.2 |     4 |
+|    91730.2 |     5 |
+|    91731.2 |     6 |
+|    91732.2 |     7 |
+|    91733.2 |     8 |
+|    91734.2 |     9 |
