@@ -68,6 +68,22 @@ Data:
 
 Timestamps: 5.1 to 5.9 in .1 steps
 
+These time-stamps precede the first clock offset measurement, but for
+synchronization they will be handled with respect to the first (and
+only in this case) detected clock segment.
+
+#### Clock offsets
+
+Clock offset times do not match the footer. This should not happen
+with LabRecorder but as this file is code-generated it’s just a
+quirk. The footer values are not used for synchronization so they can
+be safely ignored here.
+
+|   time |   value |
+|--------|---------|
+|    6.1 |    -0.1 |
+|    7.1 |    -0.1 |
+
 ### Stream 0x02C0FFEE / 46202862
 
 1 string channel, 9 samples
@@ -96,6 +112,10 @@ Identical to stream 0.
 Data: `[ (the XML footer), 'Hello', 'World', 'from', 'LSL', 'Hello', 'World', 'from', 'LSL']`
 
 Timestamps: as above
+
+#### Clock offsets
+
+No clock offsets, so synchronization will have no effect.
 
 
 ## clock\_resets.xdf
@@ -254,6 +274,18 @@ Example containing empty and non-empty data and marker streams.
 |------------|--------------|
 |      91725 | {"state": 2} |
 
+#### Clock offsets
+
+| time    | value |
+|---------|-------|
+| 91716.7 | ≅0    |
+| 91721.7 | ≅0    |
+| 91726.7 | ≅0    |
+| 91731.7 | ≅0    |
+| 91736.7 | ≅0    |
+| 91741.7 | ≅0    |
+| 91746.7 | ≅0    |
+
 ### Stream 2
 
 Empty stream.
@@ -305,6 +337,10 @@ Empty stream.
   </clock_offsets>
 </info>
 ```
+
+#### Clock offsets
+
+As above.
 
 ### Stream 3
 
@@ -363,6 +399,10 @@ Empty stream.
   </clock_offsets>
 </info>
 ```
+
+#### Clock offsets
+
+As above.
 
 ### Stream 4
 
@@ -426,13 +466,17 @@ Empty stream.
 
 | time_stamp | ch:00 |
 |------------|-------|
-|    91725.2 |     0 |
-|    91726.2 |     1 |
-|    91727.2 |     2 |
-|    91728.2 |     3 |
-|    91729.2 |     4 |
-|    91730.2 |     5 |
-|    91731.2 |     6 |
-|    91732.2 |     7 |
-|    91733.2 |     8 |
-|    91734.2 |     9 |
+| 91725.2    | 0     |
+| 91726.2    | 1     |
+| 91727.2    | 2     |
+| 91728.2    | 3     |
+| 91729.2    | 4     |
+| 91730.2    | 5     |
+| 91731.2    | 6     |
+| 91732.2    | 7     |
+| 91733.2    | 8     |
+| 91734.2    | 9     |
+
+#### Clock offsets
+
+As above.
