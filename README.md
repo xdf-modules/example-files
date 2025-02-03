@@ -75,7 +75,7 @@ only in this case) detected clock segment.
 #### Clock offsets
 
 Clock offset times do not match the footer. This should not happen
-with LabRecorder but as this file is code-generated it’s just a
+with LabRecorder but as this file is code-generated it's just a
 quirk. The footer values are not used for synchronization so they can
 be safely ignored here.
 
