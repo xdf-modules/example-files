@@ -480,3 +480,54 @@ As above.
 #### Clock offsets
 
 As above.
+
+## twochannel_string_marker.xdf
+
+Minimal example file with two streams.
+
+### Single String Marker Stream
+
+2 `string` channels, 1 sample
+
+#### Header
+
+``` xml
+<info>
+    <name>SendMarker</name>
+    <type>Marker</type>
+    <channel_count>2</channel_count>
+    <nominal_srate>1000</nominal_srate>
+    <channel_format>string</channel_format>
+    <created_at>10</created_at>
+</info>
+```
+
+#### Footer
+
+``` xml
+<info>
+    <first_timestamp>10</first_timestamp>
+    <last_timestamp>10.001</last_timestamp>
+    <sample_count>1</sample_count>
+</info>
+```
+
+#### Time-series data
+
+Data:
+
+```
+["Marker 0A" "Marker 0B"]
+```
+
+Timestamp: 16.725987961266686
+
+These time-stamps precede the first clock offset measurement, but for
+synchronization they will be handled with respect to the first (and
+only in this case) detected clock segment.
+
+#### Clock offsets
+
+|   time |   value |
+|--------|---------|
+|    6.1 |    -0.1 |
