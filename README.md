@@ -483,9 +483,9 @@ As above.
 
 ## twochannel_string_marker.xdf
 
-Minimal example file with two streams.
+An example file with two streams, one with string markers.
 
-### Single String Marker Stream
+### 3735928559
 
 2 `string` channels, 1 sample
 
@@ -517,7 +517,54 @@ Minimal example file with two streams.
 Data:
 
 ```
-["Marker 0A" "Marker 0B"]
+["Marker 0A", "Marker 0B"]
+```
+
+Timestamp: 16.725987961266686
+
+These time-stamps precede the first clock offset measurement, but for
+synchronization they will be handled with respect to the first (and
+only in this case) detected clock segment.
+
+#### Clock offsets
+
+|   time |   value |
+|--------|---------|
+|    6.1 |    -0.1 |
+
+### 46202862
+
+64 `Float64` channels, 1 sample
+
+#### Header
+
+``` xml
+<info>
+    <name>SendDataC</name>
+    <type>EEG</type>
+    <channel_count>64</channel_count>
+    <nominal_srate>1000</nominal_srate>
+    <channel_format>double64</channel_format>
+    <created_at>10</created_at>
+</info>
+```
+
+#### Footer
+
+``` xml
+<info>
+    <first_timestamp>10</first_timestamp>
+	<last_timestamp>10.001</last_timestamp>
+	<sample_count>1</sample_count>
+</info>
+```
+
+#### Time-series data
+
+Data:
+
+```
+[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,]
 ```
 
 Timestamp: 16.725987961266686
