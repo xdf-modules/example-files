@@ -485,7 +485,7 @@ As above.
 
 An example file with two streams, one with string markers.
 
-### 3735928559
+### Stream 3735928559
 
 2 `string` channels, 1 sample
 
@@ -532,7 +532,7 @@ only in this case) detected clock segment.
 |--------|---------|
 |    6.1 |    -0.1 |
 
-### 46202862
+### Stream 46202862
 
 64 `Float64` channels, 1 sample
 
